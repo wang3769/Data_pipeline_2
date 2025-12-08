@@ -1,0 +1,31 @@
+data_source:
+  provider: yfinance     # or: finnhub, alphavantage
+  api_key: ""            # used only when needed
+
+tickers:
+  - AAPL
+  - GOOGL
+  - AMZN
+  - META
+  - MSFT
+  - TSLA
+  - NVDA
+  - BABA
+  - TSM
+  - AVGO
+
+date_range:
+  start: "2024-01-01"
+  end: "2025-11-15"
+
+storage:
+  format: "csv"          # csv | parquet | sqlite
+  path: "data/"
+
+features:
+  moving_averages: [20]
+  volatility_windows: [20]
+
+schedule:
+  auto_run: false
+  time: "17:00"

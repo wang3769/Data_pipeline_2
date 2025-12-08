@@ -1,0 +1,7 @@
+# Python 3.12+
+# Basic requirements file - add your packages below
+
+# Example packages (Python 3.12 compatible):
+pandas==2.2.0
+numpy==1.26.0
+requests==2.31.0

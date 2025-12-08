@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+jenkins_home/
+
+# Ignore data folders
+finance-pipeline/data/
+Data_pipeline/data/
+data/
+*.db
+*.csv
