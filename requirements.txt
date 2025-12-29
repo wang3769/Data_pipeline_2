@@ -8,5 +8,6 @@ requests==2.31.0
 yfinance==0.2.27
 SQLAlchemy==2.0.20
 matplotlib==3.8.0
-yaml==0.2.5
 schedule==1.2.0
+PyYAML==6.0
+jupyter==1.0.0
