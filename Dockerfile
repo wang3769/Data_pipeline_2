@@ -1,12 +1,14 @@
 # Boilerplate Dockerfile for Python Application Containerization
 
 # Stage 1: Base image
-# Use an official Python runtime as the base image
-FROM python:3.12-slim
+# Use jupyter image
+FROM python:3.11-slim
 
-# Set metadata
-LABEL maintainer="Your Name <your.email@example.com>"
-LABEL description="Python application container"
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    JUPYTER_ENABLE_LAB=yes
 
 # Set working directory inside container
 WORKDIR /app
@@ -24,36 +26,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Stage 4: Copy application code
 COPY . .
 
-# Stage 5: Set environment variables (optional)
-ENV PYTHONUNBUFFERED=1
-ENV APP_ENV=production
 
-# Stage 6: Expose port (if your app runs a service)
-# EXPOSE 8000
+# Expose Jupyter port
+EXPOSE 8888
 
-# Stage 7: Define the entry point or default command
-# Option A: Run a Python script
-CMD ["python", "main.py"]
-
-# Option B: Run a web server (e.g., Flask, FastAPI)
-# CMD ["python", "-m", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
-
-# Option C: Run bash shell for debugging
-# CMD ["bash"]
-
-# ============================================
-# Quick Commands to Build and Run:
-# ============================================
-# Build the image:
-#   docker build -t finiance-pipeline:1.0 . (note that " ." is important indicating current directory)
-#
-# Run the container:
-#   docker run --rm finiance-pipeline:1.0
-#
-# Run with volume mount (for local development):
-#   docker run --rm -v $(pwd):/app my-python-app:1.0
-#
-# Run interactively:
-#   docker run --rm -it my-python-app:1.0 bash
-#
-# ============================================
+# Run Jupyter Notebook
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''", "--NotebookApp.password=''"]
