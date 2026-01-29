@@ -9,3 +9,12 @@ A sample finance pipeline project with:
 
 ## Running Jenkins
 
+# Requirements:
+long term > 5 years
+decent growth
+decent cashflow
+AI related to wait for its turn
+known TICK within the sector
+
+# Key functions
+need a strategy for exiting such as P/E > 50
